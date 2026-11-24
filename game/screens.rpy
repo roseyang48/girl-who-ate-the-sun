@@ -81,6 +81,29 @@ style frame:
 ## In-game screens
 ################################################################################
 
+## World screen ##################################################################
+##
+## does world things yippeeee
+##
+
+screen world(data):
+
+    modal False
+
+    window:
+        background data.image
+
+        id "window"
+
+        if data.contents is not None:
+
+            for c in data.contents:
+                
+                imagebutton auto c.image action If(isinstance(c, door), c.on_interact, c.on_interact):
+                    at transform:
+                        pos (c.pos[0], c.pos[1])
+
+    
 
 ## Say screen ##################################################################
 ##
