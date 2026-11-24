@@ -20,22 +20,20 @@ init python:
             pass
         
     class door(world_content):
-        def __init__(self, image, pos, nextLocation):
+        def __init__(self, image, nextLocation):
             self.image = image
-            self.pos = pos
             self.nextLocation = nextLocation
 
-        def on_interact():
-            renpy.show_screen(nextLocation)
+        def on_interact(self):
+            renpy.show_screen(self.nextLocation)
     
     class interactable(world_content):
-        def __init__(self, image, pos, label):
+        def __init__(self, image, label):
             self.image = image
-            self.pos = pos
             self.label = label
 
-        def on_interact():
-            renpy.call(label)
+        def on_interact(self):
+            renpy.jump(self.label)
 
 define e = Character("Eileen")
 
@@ -45,12 +43,19 @@ define e = Character("Eileen")
 label start:
     
     default testWorld = world_data("test world", "bg.png")
-    default testObject = interactable("test/%s.png", (20, 20), "test_label")
+    default testObject = interactable("test/%s.png", "test_label")
     $ testWorld.add_content(testObject)
 
-    "AJSKLJSDFJLDS"
     show screen expression "world" pass(testWorld)
-
+    pause
+    
 
 label test_label:
     "HI"
+    "THIS IS A TEST LABEL"
+    menu test_menu:
+        "oh okay":
+            "YAY"
+        "what i hate you":
+            "oh :("
+    "END"

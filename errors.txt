@@ -2,9 +2,13 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 102: imagebutton expects a non-empty block.
-    imagebutton auto c.image action If(isinstance(c, door), c.on_interact, c.on_interact):
-                                                                                          ^
+File "game/script.rpy", line 57: expected ':' not found.
+    else if isInstance(_return, str):
+         ^
+
+File "game/script.rpy", line 59: expected statement.
+    else:
+        ^
 
 Ren'Py Version: Ren'Py 8.3.7.25031702
-Tue Nov 24 08:52:10 2026
+Tue Nov 24 10:02:13 2026

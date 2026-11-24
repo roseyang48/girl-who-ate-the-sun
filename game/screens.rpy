@@ -87,10 +87,13 @@ style frame:
 ##
 
 screen world(data):
-
     modal False
 
-    window:
+    frame:
+        xalign 0.0
+        yalign 0.0
+        xfill True
+        yfill True
         background data.image
 
         id "window"
@@ -99,10 +102,8 @@ screen world(data):
 
             for c in data.contents:
                 
-                imagebutton auto c.image action If(isinstance(c, door), c.on_interact, c.on_interact):
-                    at transform:
-                        pos (c.pos[0], c.pos[1])
-
+                imagebutton auto c.image action c.on_interact:
+                    focus_mask True
     
 
 ## Say screen ##################################################################
@@ -119,7 +120,6 @@ screen world(data):
 ## https://www.renpy.org/doc/html/screen_special.html#say
 
 screen say(who, what):
-
     window:
         id "window"
 
